@@ -196,6 +196,7 @@ int tpSimpleResult(RPCResponse* response) {
         cJSON_AddStringToObject(resultObject, STATUS, response->result);
 
         cJSON_AddItemToObject(rpcRspObject, RESULT, resultObject);
+        cJSON_AddStringToObject(jsonObject, RESULT, SUCCESS);
     }
     if(response->errorMessage) {
         errorObject = cJSON_CreateObject();
@@ -203,6 +204,7 @@ int tpSimpleResult(RPCResponse* response) {
         cJSON_AddStringToObject(errorObject, MESSAGE, response->errorMessage);
         
         cJSON_AddItemToObject(rpcRspObject, ERROR, errorObject);
+        cJSON_AddStringToObject(jsonObject, RESULT, FAIL);
     }
     cJSON_AddItemToObject(jsonObject, RPC_RSP, rpcRspObject);
     jsonData = cJSON_Print(jsonObject);

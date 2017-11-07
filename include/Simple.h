@@ -84,7 +84,10 @@ typedef enum data_type {
 #define MESSAGE                     "message"
 /** result status(string) **/
 #define STATUS                      "status"
-
+/** result success(string) **/
+#define SUCCESS                     "success"
+/** result fail(string) **/
+#define FAIL                        "fail"
 /*
  ****************************************
  * Structure Definition

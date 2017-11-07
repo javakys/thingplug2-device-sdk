@@ -298,19 +298,6 @@ static void attribute() {
     arrayElement->total++;
 
     item = arrayElement->element + arrayElement->total;
-    item->type = JSON_TYPE_LONG;
-    item->name = "sysBatteryLevel";
-    int batteryLevel = 100;
-    item->value = &batteryLevel;
-    arrayElement->total++;
-    
-    item = arrayElement->element + arrayElement->total;
-    item->type = JSON_TYPE_STRING;
-    item->name = "sysBatteryStatus";
-    item->value = "charging";
-    arrayElement->total++;
-
-    item = arrayElement->element + arrayElement->total;
     item->type = JSON_TYPE_STRING;
     item->name = "sysFirmwareVersion";
     item->value = "2.0.0";
@@ -348,18 +335,6 @@ static void attribute() {
     item->type = JSON_TYPE_STRING;
     item->name = "sysDeviceIpAddress";
     item->value = info.deviceIpAddress;
-    arrayElement->total++;
-
-    item = arrayElement->element + arrayElement->total;
-    item->type = JSON_TYPE_STRING;
-    item->name = "sysGatewayIpAddress";
-    item->value = info.gatewayIpAddress;
-    arrayElement->total++;
-
-    item = arrayElement->element + arrayElement->total;
-    item->type = JSON_TYPE_STRING;
-    item->name = "sysNtpSvrIpAddress";
-    item->value = "time.bora.net";
     arrayElement->total++;
 
     item = arrayElement->element + arrayElement->total;
