@@ -23,6 +23,4 @@
 #define SIMPLE_SERVICE_NAME                 "(TBD)" // service name(Check with ThingPlug Portal)
 #define SIMPLE_DEVICE_NAME                  "(TBD)" // device name(Check with ThingPlug Portal)
 
-#define SERIAL_NUMBER                       "(TBD)" // device serial number
-
 #endif // _CONFIGURATION_H_

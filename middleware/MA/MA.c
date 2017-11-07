@@ -312,7 +312,7 @@ static void attribute() {
     item = arrayElement->element + arrayElement->total;
     item->type = JSON_TYPE_STRING;
     item->name = "sysSerialNumber";
-    item->value = SERIAL_NUMBER;
+    item->value = "710DJC5I10000290";
     arrayElement->total++;
 
     item = arrayElement->element + arrayElement->total;
