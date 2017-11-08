@@ -47,6 +47,10 @@ Library
 __cJSON__ | JSON parser | [cJSON Homepage](https://github.com/DaveGamble/cJSON) | 소스코드 형태로 SDK내에 포함됨
 __paho__ | MQTT | [paho Homepage](https://eclipse.org/paho/) | prebuilt된 라이브러리 파일형태로 SDK내에 포함됨
 
+API Document
+---
+* [Download](docs/ThingPlug_Simple_SDK_API-20171106.pdf)
+
 Middleware build
 ===
 
