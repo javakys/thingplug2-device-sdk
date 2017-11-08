@@ -10,8 +10,8 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
 
-#define MQTT_HOST                           "218.53.242.111" // dodam : 218.53.242.111, IDC : 223.39.123.140
-#define MQTT_SECURE_HOST                    "ssl://218.53.242.111"
+#define MQTT_HOST                           "(TBD)"
+#define MQTT_SECURE_HOST                    "(TBD)"
 #define MQTT_PORT                           1883
 #define MQTT_SECURE_PORT                    8883
 #define MQTT_KEEP_ALIVE                     120
