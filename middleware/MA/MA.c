@@ -28,8 +28,6 @@
 #include "SKTtpDebug.h"
 
 #define MQTT_TOPIC_CONTROL_DOWN             "v1/dev/%s/%s/down"
-#define MQTT_TOPIC_SUBSCRIBE_RES            "v1/devices/tp/%s"
-#define MQTT_TOPIC_GATEWAY_CONTROL_DOWN     "v1/gw/%s/%s/down"
 
 #define TOPIC_SUBSCRIBE_SIZE                1
 
@@ -63,7 +61,6 @@ typedef struct
 } NetworkInfo;
 
 static char mTopicControlDown[SIZE_TOPIC] = "";
-static char mTopicSubscribeRes[SIZE_TOPIC] = "";
 static char mClientID[SIZE_CLIENT_ID] = "";
 
 static void attribute();
@@ -418,8 +415,8 @@ void start() {
     SKTDebugPrint(LOG_LEVEL_INFO, "client id : %s", mClientID);
     // create Topics
     snprintf(mTopicControlDown, SIZE_TOPIC, MQTT_TOPIC_CONTROL_DOWN, SIMPLE_SERVICE_NAME, SIMPLE_DEVICE_NAME);    
-    snprintf(mTopicSubscribeRes, SIZE_TOPIC, MQTT_TOPIC_SUBSCRIBE_RES, LOGIN_NAME);
-    char* subscribeTopics[] = { mTopicControlDown, mTopicSubscribeRes };
+
+    char* subscribeTopics[] = { mTopicControlDown };
 
 #if(MQTT_ENABLE_SERVER_CERT_AUTH)
 	char host[] = MQTT_SECURE_HOST;
