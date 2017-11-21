@@ -9,6 +9,19 @@
 #ifndef _DEFINE_H_
 #define _DEFINE_H_
 
+/* CONNACK : 0 Connection Accepted */
+#define CONNECTION_ACCEPTED 0
+/* CONNACK : 1 Connection Refused, unacceptable protocol version */
+#define CONNECTION_REFUSED_UNACCEPTABLE_PROTOCOL_VERSION 1
+/* CONNACK : 2 Connection Refused, identifier rejected */
+#define CONNECTION_REFUSED_IDENTIFIER_REJECTED 2
+/* CONNACK : 3 Connection Refused, Server unavailable */
+#define CONNECTION_REFUSED_SERVER_UNAVAILABLE 3
+/* CONNACK : 4 Connection Refused, bad user name or password */
+#define CONNECTION_REFUSED_BAD_USERNAME_OR_PASSWORD 4
+/* CONNACK : 5 Connection Refused, not authorized */
+#define CONNECTION_REFUSED_NOT_AUTHORIZED 5
+
 /* Return code: No error. Indicates successful completion */
 #define TP_SDK_SUCCESS 0
 /* Return code: A generic error code indicating the failure */

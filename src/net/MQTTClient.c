@@ -197,7 +197,7 @@ int MQTTAsyncCreate(char* host, int port, int keepalive, char* userName, char* p
 		memcpy(mUserName, userName, strlen(userName));
         conn_opts.username = mUserName;
    	}
-    if(password) {
+    if(password && strlen(password) > 0) {
 		memset(mUserPass, 0, sizeof(mUserPass));
 		memcpy(mUserPass, password, strlen(password));
         conn_opts.password = mUserPass;

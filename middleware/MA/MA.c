@@ -27,6 +27,7 @@
 #include "Configuration.h"
 #include "SKTtpDebug.h"
 
+#define MQTT_CLIENT_ID                      "%s_%s"
 #define MQTT_TOPIC_CONTROL_DOWN             "v1/dev/%s/%s/down"
 
 #define TOPIC_SUBSCRIBE_SIZE                1
@@ -156,9 +157,9 @@ void MQTTMessageArrived(char* topic, char* msg, int msgLen) {
             SKTDebugPrint(LOG_LEVEL_INFO, "act7colorLed : %d, %d", act7colorLed, cmdId);
             int rc = RGB_LEDControl(act7colorLed);
 
-            ArrayElement* arrayElement = calloc(1, sizeof(ArrayElement));            
+            ArrayElement* arrayElement = calloc(1, sizeof(ArrayElement));
             arrayElement->capacity = 1;
-            arrayElement->element = calloc(1, sizeof(Element) * arrayElement->capacity);            
+            arrayElement->element = calloc(1, sizeof(Element) * arrayElement->capacity);
             Element* item = arrayElement->element + arrayElement->total;
             item->type = JSON_TYPE_LONG;
             item->name = "act7colorLed";
@@ -281,7 +282,7 @@ static int getNetworkInfo(NetworkInfo* info, char* interface) {
 }
 
 static void attribute() {
-    
+
     ArrayElement* arrayElement = calloc(1, sizeof(ArrayElement));
     
     arrayElement->capacity = 15;
@@ -409,12 +410,12 @@ void start() {
     rc = tpSimpleInitialize(SIMPLE_SERVICE_NAME, SIMPLE_DEVICE_NAME);
     SKTDebugPrint(LOG_LEVEL_INFO, "tpSimpleInitialize : %d", rc);
     // create clientID - MAC address
-    char* clientID = GetMacAddressWithoutColon();
-    memcpy(mClientID, clientID, strlen(clientID));
-    free(clientID);
+    char* macAddress = GetMacAddressWithoutColon();
+    snprintf(mClientID, sizeof(mClientID), MQTT_CLIENT_ID, SIMPLE_DEVICE_NAME, macAddress);
+    free(macAddress);
     SKTDebugPrint(LOG_LEVEL_INFO, "client id : %s", mClientID);
     // create Topics
-    snprintf(mTopicControlDown, SIZE_TOPIC, MQTT_TOPIC_CONTROL_DOWN, SIMPLE_SERVICE_NAME, SIMPLE_DEVICE_NAME);    
+    snprintf(mTopicControlDown, SIZE_TOPIC, MQTT_TOPIC_CONTROL_DOWN, SIMPLE_SERVICE_NAME, SIMPLE_DEVICE_NAME);
 
     char* subscribeTopics[] = { mTopicControlDown };
 
@@ -425,7 +426,7 @@ void start() {
 	char host[] = MQTT_HOST;
 	int port = MQTT_PORT;
 #endif
-    rc = tpSDKCreate(host, port, MQTT_KEEP_ALIVE, LOGIN_NAME, LOGIN_PASSWORD, 
+    rc = tpSDKCreate(host, port, MQTT_KEEP_ALIVE, LOGIN_NAME, NULL, 
         MQTT_ENABLE_SERVER_CERT_AUTH, subscribeTopics, TOPIC_SUBSCRIBE_SIZE, NULL, mClientID);
     SKTDebugPrint(LOG_LEVEL_INFO, "tpSDKCreate result : %d", rc);
 }

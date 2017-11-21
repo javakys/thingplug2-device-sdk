@@ -11,7 +11,7 @@ CC = $(CROSS_COMPILE)gcc
 RANLIB = $(CROSS_COMPILE)ranlib
 
 #c files
-ONEM2M_SDK_OBJS = \
+SIMPLE_SDK_OBJS = \
 	$(SDK_DIR)/SKTtpDebug.o \
 	$(SDK_DIR)/net/MQTTClient.o \
 	$(SDK_DIR)/ThingPlug.o \
@@ -21,7 +21,7 @@ ONEM2M_SDK_OBJS = \
 INC = -I./include 
 LIBS = 
 CFLAGS = -g -c -Wall $(FEATURE)
-COBJS = $(ONEM2M_SDK_OBJS)
+COBJS = $(SIMPLE_SDK_OBJS)
 TARGET = libtplinuxsdk.a
 
 all: $(TARGET)
@@ -36,6 +36,6 @@ $(TARGET): $(COBJS)
 	$(CC) $(CFLAGS) $(INC) $< -o $@
 	
 clean :
-	rm -rf $(ONEM2M_SDK_OBJS)
+	rm -rf $(SIMPLE_SDK_OBJS)
 	rm -rf $(OUTPUT)/$(TARGET)
 	
